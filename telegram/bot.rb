@@ -19,7 +19,7 @@ Telegram::Bot::Client.run(token) do |bot|
       if find.empty?
         bot.api.send_message(chat_id: message.from.id, text: 'Прости, я пока что не могу найти этот товар=(((((')
       else
-        bot.api.send_photo(chat_id: message.chat.id, photo: Faraday::UploadIO.new("/home/nik/workspace/tlgbot/public/#{find.last.image_url}", 'image/jpeg'))
+        bot.api.send_photo(chat_id: message.chat.id, photo: Faraday::UploadIO.new("./public#{find.last.image_url}", 'image/jpeg'))
       end
     end
   end
