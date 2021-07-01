@@ -1,0 +1,10 @@
+<h1>Товары</h1>
+
+<ul class="list-inline">
+  <% @products.each do |form| %>
+    <li class="list-group-item">
+      <%= link_to form.name, form %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Добавить товар", new_product_path, class:"btn btn-lg btn-primary" %>

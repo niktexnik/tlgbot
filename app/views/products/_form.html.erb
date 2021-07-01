@@ -1,0 +1,22 @@
+<%= form_for @product, html: { multipart: true } do |form| %>
+ <%
+=begin%>
+ <div><%= image_tag @product.image.url(:thumb)%></div>  
+<%
+=end%>
+  <%= image_tag(@product.image_url) if @product.image? %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% @product.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+ <%= form.file_field :image %>
+  <%= form.hidden_field :image_cache %>
+  <div>
+ <%= form.select :category, [1,2,3,4,5,6], selected: '1' %> 
+      <%=form.submit %>
+  </div>
+  <%= link_to "В главное меню", root_path, class:"btn btn-lg btn-primary" %>
+<% end %>
